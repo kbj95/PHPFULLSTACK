@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-1 form Tag</title>
+</head>
+<body>
+    <form action="">
+        <fieldset>
+            <legend>상품 선택</legend>
+            <!-- label for 속성의 속성값은 id명과 일치해야함 name의 속성값(=name이름)은 중복사용가능하지만 id는 고유한값(한번만사용가능)-->
+            <label for="id">ID</lable>
+            <input type="text" name="id" id="id" placeholder="아이디를 입력하세요">
+            <label for="pw">PW</label>
+            <input type="password" name="pw" id="pw"><br>
+            <label>
+                ID_1
+                <input type="text" name="id_1" id="id_1" maxlength="10" size="10">
+            </label><br>
+            <label for="seach">search</label>
+            <input type="search" name="serch" id="search">
+            <br>
+            <label for="url">url</label>
+            <input type="url" name="url" id="url">
+            <br>
+            <label for="email">email</label>
+            <input type="email" name="email" id="email">
+            <button>버튼</button>
+            <br>
+            <!-- pc버전에서는 확인할수없지만 모바일에서 번호를 입력하기위한 숫자패드가 올라옴 -->
+            <label for="tel">tel</label>
+            <input type="tel" name="tel" id="tel">
+            <br>
+            <ul>
+                <li>
+                    <label for="sb">딸기</label>
+                    <input value="1" type="checkbox" name="sb" id="sb">
+                    <!-- value의 값이 백엔드로 넘어감 -->
+                </li>
+                <li>
+                    <label for="banana">바나나</label>
+                    <input value="2" type="checkbox" name="banana" id="banana">
+                </li>
+                <li>
+                    <label for="wm">수박</label>
+                    <input value="3" type="checkbox" name="wm" id="wm">
+                </li>
+            </ul>    
+            <ul>
+                <li>
+                    <label for="sb2">딸기</label>
+                    <input type="radio" name="fruit" id="sb2">
+                </li>
+                <li>
+                    <label for="banana2">바나나</label>
+                    <input type="radio" name="fruit" id="banana2">
+                </li>
+                <li>
+                    <label for="wm2">수박</label>
+                    <input type="radio" name="fruit" id="wm2">
+                </li>
+            </ul>
+            <label for="number">Number</label>
+            <input type="number" name="number" id="number" min="1" max="10" value="3">
+            <br>
+            <label for="range">Range</label>
+            <input type="range" name="range" id="range" value="0" max="5">
+            <br>
+            <label for="date">Date</label>
+            <input type="date" name="name" id="name" min="2023-02-28" max="2023-03-10">
+        </fieldset>
+    </form>
+    <form action="">
+        <fieldset>
+            <legend>배송 정보</legend>
+        </fieldset>
+    </form>
+</body>
+</html>
