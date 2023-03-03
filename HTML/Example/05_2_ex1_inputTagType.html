@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>05-2 input Tag </title>
+</head>
+<body>
+    <form action="">
+        <fieldset>
+            <legend>고객 정보</legend>
+            <label for="id">아이디</label>
+            <input type="id" name="id" id="id" maxlength="10" placeholder="10자까지 입력해주세요" autofocus required>
+            <!-- autofocus=페이지가 열릴때 자동으로 활성화 required=필수입력사항 -->
+            <br>
+            <label for="pw">비밀번호</label>
+            <input type="password" name="pw" id="pw" maxlength="15">
+            <br>
+            <label for="readonly">참조사항</label>
+            <input type="text" readonly value="읽기전용">
+            <br>
+            <ul>
+                <li>
+                    <label for="sb">딸기</label>
+                    <input value="1" type="checkbox" name="sb" id="sb">
+                    <!-- value의 값이 백엔드로 넘어감 -->
+                </li>
+                <li>
+                    <label for="banana">바나나</label>
+                    <input value="2" type="checkbox" name="banana" id="banana" checked>
+                </li>
+                <li>
+                    <label for="wm">수박</label>
+                    <input value="3" type="checkbox" name="wm" id="wm">
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <label for="sb2">딸기</label>
+                    <input type="radio" name="fruit" id="sb2">
+                </li>
+                <li>
+                    <label for="banana2">바나나</label>
+                    <input type="radio" name="fruit" id="banana2">
+                </li>
+                <li>
+                    <label for="wm2">수박</label>
+                    <input type="radio" name="fruit" id="wm2" checked>
+                </li>
+            </ul>
+            
+            <input type="submit">    
+        </fieldset>
+    </form>
+</body>
+</html>
