@@ -1,0 +1,10 @@
+@charset "utf-8";
+
+ul{
+    /* list-style:none; */
+    line-height:2em;
+}
+.fw-c{
+    color:#ad3000;
+    font-weight:700;
+}
