@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>230307-269p</title>
+    <style>
+/*         .art_1{
+            border: 3px solid red;
+            display: none;
+        }
+        .div_2{
+            border: 3px solid orange;
+        } */
+        div{
+            border: 3px solid orange;
+        }
+        span{
+            border: 3px solid black;
+        }
+        /* inline레벨 요소들에게는 width,height 적용이안됨 */
+        .art_2 > div, .art_2 > span{
+            display: inline-block;
+
+            width: 150px;
+            height: 150px;
+        }
+        .wh{
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    <article class="art_2">
+        <div>div Tag1</div>
+        <div>div Tag2</div>
+        <div>div Tag3</div>
+        <span>span1</span>
+        <span>span2</span>
+        <span>span3</span>
+    </article>
+
+    <br><br>
+
+    <div class="wh">테스트 div1</div>
+    <div class="wh">테스트 div2</div>
+
+<!--     <article class="art_1">
+        <h1>Display None</h1>
+        <div>div Tag1</div>
+        <div>div Tag</div>
+    </article>
+    <div class="div_2">div Tag 2</div>
+    <h1>h1</h1>
+    <p></p>
+
+    <span>span</span>
+    <a href="">a</a> -->
+</body>
+</html>
