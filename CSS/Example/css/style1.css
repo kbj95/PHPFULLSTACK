@@ -1,0 +1,121 @@
+@charset "utf-8";
+
+/* 공통 영역 */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: #333;
+}
+ul,li{list-style: none;}
+#container{
+    width: 1200px;
+    height: 700px;
+    margin: auto;
+}
+a{
+    text-decoration: none;
+    display: block;
+}
+img{
+    width: 100%;
+    height: 100%;
+}
+
+/* header 영역 */
+header{
+    width: 100%;
+    height:100px;
+    position: relative;
+}
+.logo1{
+    display: inline-block;
+    margin-top: 30px;
+}
+.mainMenu{
+    position: absolute;
+    text-align: center;
+    font-weight: 700;
+    position: absolute;
+    top: 70px;
+    right: 0px;
+    z-index: 5;
+}
+.mainMenu > li{
+    float: left;
+    width: 150px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #ccc;
+    border-right: none;
+}
+.mainMenu > li:last-child{
+    border: 1px solid #ccc;
+}
+.mainMenu > li:hover > a{
+    background: #000;
+    color: #fff;
+}
+.subMenu{
+    background: rgba(204, 204, 204, 0.5);
+    display: none;
+}
+.subMenu > li:hover > a{
+    background: #000;
+    color: #fff;
+} 
+
+/* slide 영역 */
+.slideArea{
+    position: relative;
+    width: 100%;
+    height: 300px;
+    background: #fff;
+    overflow: hidden;
+}
+.slide{
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.6s;
+}
+.text{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: rgba(255,255,255,0.5);
+    border-radius: 20px;
+    font-size: 40px;
+    font-weight: 700;
+    padding: 10px 100px;
+}
+
+/* contents 영역 */
+.contents{
+    width: 100%;
+    height: 200px;
+    display: flex;
+}
+.ngArea{
+    width: calc(1200px/3);
+    height: 100%;
+    background:pink;
+}
+.bannerArea{
+    width: calc(1200px/3);
+    height: 100%;
+    background: skyblue;
+}
+.gotoArea{
+    width: calc(1200px/3);
+    height: 100%;
+    background: yellowgreen;
+}
+
+/* footer 영역 */
+footer{
+    width: 100%;
+    height: 100px;
+    background: #ccc;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>230308-backgroundImages</title>
+    <style>
+        .div_img{
+            width: 500px;
+            height: 400px;
+            /* ''를 사용하는이유:특수문자같은게 들어가면 파일을 못불러옴 
+            두번째 url은 첫번째 이미지를 불러오지못했을경우에 뜬다*/
+            background-image: url('https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_960_720.jpg'), url(../../HTML/Media/layer1.jpg);
+        }
+/*         body{
+            background-image: url('https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_960_720.jpg');
+        } */
+        .div_repeat{
+            background-image: url('https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_960_720.jpg');
+            width: 100vw;
+            height: 100vw;
+            border: 1px solid black;
+            background-repeat: no-repeat;
+        }
+        .div_position{
+            border: 1px solid black;
+            background-image: url('https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_960_720.jpg');
+            width: 1000px;
+            height: 600px;
+            background-repeat: no-repeat;
+            /* background-position: bottom 100px right 250px; */
+            background-size: contain;
+        }
+        .at_img{
+            background-image: url('https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_960_720.jpg');
+            background-size: 80%;
+            width: 150px;
+            height: 200px;
+            display: inline-block;
+            border: 1px solid black;
+            overflow: scroll;
+            margin-top: 200px;
+        }
+        .div_img_scroll{
+            background-attachment: scroll;
+        }
+        .div_img_fixed{
+            background-attachment: fixed;
+        }
+        .div_img_local{
+            background-attachment: local;
+        }
+    </style>
+</head>
+<body>
+<!--     <h1>backgruund-image</h1>
+    <div class="div_img"></div> -->
+<!--     <h1>background-repeat</h1>
+    <div class="div_repeat"></div> -->
+<!--     <h1>background-position</h1>
+    <div class="div_position"></div> -->
+    <div style="height: 1000px;">
+        <div class="div_img_scroll at_img">
+            별이 그리고 나는 거외다. 애기 나의 봄이 써 가을로 위에 아이들의 이 있습니다. 동경과 가을 불러 가슴속에 패, 청춘이 없이 딴은 있습니다. 많은 위에도 노루, 이웃 계십니다. 어머니, 아침이 겨울이 이름을 남은 별 이네들은 버리었습니다. 내일 벌레는 것은 멀리 별들을 토끼, 멀듯이, 별 자랑처럼 까닭입니다.
+        </div>
+        <div class="div_img_fixed at_img">
+            별이 그리고 나는 거외다. 애기 나의 봄이 써 가을로 위에 아이들의 이 있습니다. 동경과 가을 불러 가슴속에 패, 청춘이 없이 딴은 있습니다. 많은 위에도 노루, 이웃 계십니다. 어머니, 아침이 겨울이 이름을 남은 별 이네들은 버리었습니다. 내일 벌레는 것은 멀리 별들을 토끼, 멀듯이, 별 자랑처럼 까닭입니다.
+        </div>
+        <div class="div_img_local at_img">
+            별이 그리고 나는 거외다. 애기 나의 봄이 써 가을로 위에 아이들의 이 있습니다. 동경과 가을 불러 가슴속에 패, 청춘이 없이 딴은 있습니다. 많은 위에도 노루, 이웃 계십니다. 어머니, 아침이 겨울이 이름을 남은 별 이네들은 버리었습니다. 내일 벌레는 것은 멀리 별들을 토끼, 멀듯이, 별 자랑처럼 까닭입니다.
+        </div>
+    </div>
+</body>
+</html>
