@@ -18,4 +18,17 @@ $(document).ready(function(){
         $('.slide').eq(now-1).css('margin-top','-500px');
         $('.slide').eq(now).css('margin-top','0');
     }
+
+    $(".galleryTab").click(function(){
+        $(".noticeTab").addClass("tabBg");
+        $(".galleryTab").removeClass("tabBg");
+        $(".noticeArea").hide();
+        $(".galleryArea").show();
+    });
+    $(".noticeTab").click(function(){
+        $(".galleryTab").addClass("tabBg");
+        $(".noticeTab").removeClass("tabBg");
+        $(".noticeArea").show();
+        $(".galleryArea").hide();
+    });
 });

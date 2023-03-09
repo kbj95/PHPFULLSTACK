@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>230309-test</title>
+    <link rel="stylesheet" href="../Example/css/10_3_tng1_final.css">
+</head>
+<body>
+    <form action="">
+        <fieldset>
+            <legend>I want YOU!</legend>
+            <ul class="height">
+                <li>
+                    <label for="name" class="star">이름</label>
+                    <input type="text" id="name" name="name" placeholder="이름을 입력하세요" required>
+                </li>
+                <li>
+                    <label for="age" class="star">나이</label>
+                    <input type="number" id="age" name="name" min="20" required>
+                </li>
+                <li>
+                    <label class="star">성별</label>
+                    <input type="radio" id="man" name="radio" required>
+                    <label for="man" class="on">남자</label>
+                    <input type="radio" id="woman" name="radio" required>
+                    <label for="woman" class="on">여자</label>
+                </li>
+            </ul>
+            <ul class="float">
+                <li>
+                    <label for="order">요청사항</label>
+                </li>
+                <li>
+                    <textarea name="memo" id="order" cols="40" rows="8" placeholder="요청 사항 입력" maxlength="500" class="p"></textarea>
+                </li>
+                <li class="off">
+                    <button type="submit">보내기</button>
+                    <span class="return">내용을 다시 한 번 확인해 주세요.</span>
+                </li>
+            </ul>
+        </fieldset>
+    </form>
+</body>
+</html>

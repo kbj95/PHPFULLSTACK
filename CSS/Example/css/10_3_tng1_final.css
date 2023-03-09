@@ -1,0 +1,64 @@
+ul,li{
+    list-style: none;
+}
+form{
+    margin: 20px;
+}
+fieldset{
+    width: 500px;
+    height: 320px;
+    background: url(../../../HTML/Media/layer1.jpg) no-repeat;
+    background-size: cover;
+}
+label.star::before{
+    content: '*';
+    color: red;
+}
+legend{
+    color: hotpink;
+    font-size: 30px;
+    font-weight: 900;
+}
+input{
+    background: none;
+}
+input:focus{
+    border: 3px solid red;
+    outline: none;
+}
+input:checked + label{
+    color: red;
+}
+textarea{
+    background: none;
+}
+textarea:focus{
+    border: 3px solid red;
+    outline: none;
+}
+span.return{
+    color: #fff;
+    background: #000;
+}
+button{
+    margin-top: 10px;
+}
+ul.position{
+    position: relative;
+}
+ul.float > li{
+    float: left;
+}
+.off{
+    clear: both;
+}
+.return{
+    display: none;
+}
+button:hover + span{
+    display: inline-block;
+    vertical-align: middle;
+}
+li{
+    margin-bottom: 5px;
+}

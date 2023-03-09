@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>230309-가상클래스</title>
+    <style>
+        /*
+            :link - 아직 방문하지 않은 요소에만 스타일을 적용
+            :visited - 방문 한적이 있는 요소에만 스타일을 적용
+            :hover - 마우스 포인터를 요소 위에 올렸을 때 스타일을 적용
+            :active - 활성화한 요소에 스타일을 적용
+
+            :focus - 포커스를 받은 요소에 스타일을 적용
+            :target - 앵커 대상에 스타일을 적용
+
+            A :nth-child(n) - A의 n번째 자식 요소에 스타일 적용
+            A:nth-of-type() - 
+            :not(selector) - 
+
+            ::first-letter - 첫글자에만 스타일을 적용
+            ::first-line - 첫줄에만 스타일을 적용
+            ::selection - 드래그 한 요소에 스타일을 적용
+        */
+        nav a{
+            text-decoration: none;
+        }
+        ul,li{
+            list-style: none;
+        }
+        li > a{
+            color: #fff;
+        }
+        li{
+            float: left;
+            padding:0px 25px;
+            height: 30px;
+            line-height: 30px;
+            border: 1px solid #ccc;
+            border-right: none;
+            text-align: center;
+            background: #000;
+            color: #fff;
+        }
+        li:last-child{
+            border-right: 1px solid #ccc;
+        }
+        li:hover{
+            background-color: gray;
+            cursor: pointer;
+        }
+        label{
+            vertical-align: middle;
+        }
+
+        input:focus{
+            outline: none;
+            border: 1px solid #ff00e6;
+        }
+        a:active{
+            color: red;
+        }
+        span#target_1{
+            margin-top: 1000px;
+            display: block;
+        }
+        #target_1:target{
+            background-color: pink;
+        }
+/*         div :nth-child(1){
+            background-color: yellow;
+        } */
+        div.container p:nth-of-type(1){
+            background-color: #30ff02;
+        }
+        div.container :not(p) {
+            background-color: pink;
+        }
+        .container_2 .pf_1::first-letter{
+            font-size: 20px;
+            background-color: cornflowerblue;
+        }
+        .container_2 .pf_2::first-line{
+            background-color: orange;
+        }
+
+        .pf_1 > span::before{
+            content: '중요';
+            color: red;
+        }     
+        .pf_2 > span::after{
+            content: '중요';
+            color: red;
+        }
+        .container_2 p::selection {
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <fieldset>
+        <legend>가상 요소</legend>
+        <div class="container_2">
+            <h2>h2_1</h2>
+            <p class="pf_1">문명이 출현하면서 <span>사회집단</span> 또는 부족 </p>
+            <p class="pf_2">
+                문명이 출현하면서 <span>사회집단</span> 문명이 출현하면서 사회집단 문명이 출현하면서 사회집단 문명이 출현하면서 사회집단 문명이 출현하면서 사회집단 문명이 출현하면서 사회집단 문명이 출현하면서 사회집단 문명이 출현하면서 사회집단 문명이 출현하면서 사회집단 문명이 출현하면서 사회집단 문명이 출현하면서 사회집단 문명이 출현하면서 사회집단 </p>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>구조 가상 클래스</legend>
+        <div class="container">
+            <h2>h2_1</h2>
+            <p>p_1</p>
+            <p>p_2</p>
+            <h2>h2_2</h2>
+            <p>p_3</p>
+        </div>
+    </fieldset>
+    <a href="https://naver.com">Naver</a>
+    <a href="https://daum.net">Daum</a>
+    <hr>
+    <nav>
+        <ul>
+            <li><a href="#target_1">MENU1</a></li>
+            <li><a href="#">MENU2</a></li>
+            <li><a href="#">MENU3</a></li>
+            <li><a href="#">MENU4</a></li>
+            <li><a href="#">MENU5</a></li>
+        </ul>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <label for="input_1">이름</label>
+    <input type="text" id="input_1">
+    <br>
+    <br>
+    <span id="target_1">target 테스트</span>
+</body>
+</html>
