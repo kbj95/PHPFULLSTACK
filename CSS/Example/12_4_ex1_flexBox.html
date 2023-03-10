@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>230310-flex</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /* 가로 = 주축 세로 = 교차축 */
+        .flex_container{
+            background-color: gray;
+            width: 60vw;
+            height: 60vh;
+            display: flex;
+
+            /* flex-direction: 주축과 방향을 지정하는 속성 */
+            /*
+                :row = 주축을 가로로 지정하고 왼쪽에서 오른쪽으로 배치한다.기본값
+                :row-reverse = 주축을 가로로 지정하고 오른쪽에서 왼쪽으로 배치
+                :column = 주축을 세로로 지정하고 위쪽에서 아래쪽으로 배치
+                :column-reverse = 주축을 세로로 지정하고 아래쪽에서 위쪽으로 배치
+            */
+            
+            /* flex-wrap : 항목의 줄을 바꿀지 여부를 지정 */
+            /* 
+                :nowrap = 플렉스 항목을 한줄에 표시. 기본값
+                :wrap = 플렉스 항목을 여러 줄에 표시
+                :wrap-reverse = 플렉스 항목을 여로 줄에 표시하되 ,시작점과 끝점이 바뀐다
+            */
+
+            /* flex-flow : flex-direction과 flex-wrap을 한번에 지정합니다. */
+            /*
+                flex-flow : row(flex-direction) nowrap(flex-wrap); 
+            */
+
+            /* justify-content : 주축 방향을 기준으로 정렬 */
+            /*  
+                :flex-start - 주축의 시작점에 맞춰 배치
+                :flex-end - 주축의 끝점에 맞춰 배치
+                :center - 주축의 중앙에 맞춰 배치
+                :space-between - 첫 번째 항목과 끝 항목을 주축의 시작점과 끝점에 배치한 후 나머지 항목은 그 사이에 같은 간격으로 배치
+                :space-around; - 모든 항목을 주축에 같은 간격으로 배치
+            */
+            
+            /* align-items: 교차축을 기준으로 정렬합니다. */
+            /*
+                :flex-start - 교차축의 시작점에 맞춰 배치
+                :flex-end - 교차축의 끝점에 맞춰 배치
+                :center - 교차축의 중앙에 배치
+                :baseline - 교차축의 문자 기준선에 맞춰 배치
+                :stretch - 플렉스 항목을 늘려 교차축에 가득 차게 배치
+            */
+
+            /* align-content : 교차축 기준으로 여러줄일 때 정렬 방법을 지정  */
+            align-content: flex-start;
+
+            /* align-self : 교차축을 기준으로 특정 항목만 정렬 */
+        }
+        .flex_item{
+            border: 1px solid black;
+            width: 15vw;
+            height: 15vh;
+            background-color: aqua;
+        }
+        .item_3{
+            align-self: center;
+        }
+
+
+
+        #wrap{
+            width: 100vw;
+            height: 100vh;
+        }
+        header{
+            width: 100%;
+            height: calc(100vh/3);
+            background: blue;
+        }
+        #container{
+            display: flex;
+        }
+        aside{
+            width: calc(100vw/3);
+            height: calc(100vh - 100vh/3);
+            background: green;
+        }
+        main{
+            width: calc(100vw - 100vw/3);
+            height: calc(100vh - 100vh/3);
+        }
+        .contents{
+            width: calc(100vw - 100vw/3);
+            height: calc(
+                (100vh - 100vh/3)/2
+            );
+            background: orange;
+        }
+        footer{
+            width: calc(100vw - 100vw/3);
+            height: calc(
+                (100vh - 100vh/3)/2
+            );
+        }
+        .box2{
+            width: calc(
+                (100vw - 100vw/3)/2
+            );
+            height: calc(
+                (100vh - 100vh/3)/2
+            );
+            background-color: yellow;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="flex_container">
+        <div class="flex_item">1</div>
+        <div class="flex_item">2</div>
+        <div class="flex_item">3</div>
+        <div class="flex_item">4</div>
+        <div class="flex_item">5</div>
+    </div>
+    <br><br>
+    <hr>
+    <div id="wrap">
+        <header></header>
+        <div id="container">
+            <aside></aside>
+            <main>
+                <div class="contents"></div>
+                <footer>
+                    <div class="box1"></div>
+                    <div class="box2"></div>
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>230310-flex</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #wrap{
+            width: 50vw;
+            height: 100vh;
+            margin: 20px;
+        }
+        .container1{
+            width: 100%;
+            height: calc(100vh/2);
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+        .container2{
+            width: 100%;
+            height: calc(100vh/2);
+            border: 1px solid #ccc;
+        }
+        .contents1{
+            margin:15px auto;
+            width: 90%;
+            height: calc(
+                (100vh/2 - 75px)/4
+            );
+            border: 1px solid #ccc;
+            display: flex;
+        }
+        .contents2{
+            margin:15px auto;
+            width: 90%;
+            height: calc(
+                (100vh/2 - 90px)/5
+            );
+            border: 1px solid #ccc;
+            display: flex;
+        }
+        .img{
+            align-self: center;
+            width: 80px;
+            height: 60px;
+            border-right: 3px solid #000;
+            display: flex;
+        }
+        .text{
+            align-self: center;
+            margin-left: 10px;
+        }
+        h2{
+            color: blue;
+        }
+        img{
+            margin: 0 auto;
+            width: 80%;
+            height: 80%;
+            align-self: flex-end;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div class="container1">
+            <div class="contents1 box1">
+                <div class="img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/XEIcon_xi-group.svg/40px-XEIcon_xi-group.svg.png">
+                </div>
+                <div class="text">
+                    <h2>사랑방</h2>
+                    <p>다른 분들과 의견을 교환해봐요!</p>
+                </div>
+            </div>
+            <div class="contents1 box2">
+                <div class="img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/XEIcon_xi-message.svg/40px-XEIcon_xi-message.svg.png">
+                </div>
+                <div class="text">
+                    <h2>질문방</h2>
+                    <p>지침으로 해소되지 않는 의문을 풀어봐요!</p>
+                </div>
+            </div>
+            <div class="contents1 box3">
+                <div class="img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Group_half.svg/40px-Group_half.svg.png">
+                </div>
+                <div class="text">
+                    <h2>사용자 모임</h2>
+                    <p>커뮤니티 포털에 방문해 보세요!</p>
+                </div>
+            </div>
+            <div class="contents1 box4">
+                <div class="img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/XEIcon_xi-library-bookmark.svg/40px-XEIcon_xi-library-bookmark.svg.png">
+                </div>
+                <div class="text">
+                    <h2>정책과 지침</h2>
+                    <p>편집하시기 전에 한번 읽어주세요!</p>
+                </div>
+            </div>
+        </div>
+        <div class="container2">
+            <h3></h3>
+            <div class="contents2 box5">
+                <div class="img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/XEIcon_xi-heart.svg/40px-XEIcon_xi-heart.svg.png">
+                </div>
+                <div class="text">
+                    <h2>환영합니다!</h2>
+                    <p>위키백과는 여러분을 환영합니다.</p>
+                </div>
+            </div>
+            <div class="contents2 box6">
+                <div class="img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Document_sans_add.svg/40px-Document_sans_add.svg.png">
+                </div>
+                <div class="text">
+                    <h2>새 문서 만들기 도움말</h2>
+                    <p>새 문서를 만드는 방법에 대해 안내합니다.</p>
+                </div>
+            </div>
+            <div class="contents2 box7">
+                <div class="img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Document_text_edit.svg/40px-Document_text_edit.svg.png">
+                </div>
+                <div class="text">
+                    <h2>문서 편집 도움말</h2>
+                    <p>문서를 편집하는 방법에 대해 안내합니다.</p>
+                </div>
+            </div>
+            <div class="contents2 box8">
+                <div class="img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/PICOL_icon_Image_add.svg/40px-PICOL_icon_Image_add.svg.png">
+                </div>
+                <div class="text">
+                    <h2>그림 올리기 도움말</h2>
+                    <p>그림을 올리는 방법에 대해 안내합니다.</p>
+                </div>
+            </div>
+            <div class="contents2 box9">
+                <div class="img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/XEIcon_xi-building.svg/40px-XEIcon_xi-building.svg.png">
+                </div>
+                <div class="text">
+                    <h2>지원 단체</h2>
+                    <p>위키백과 커뮤니티를 지원하는 단체는?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
