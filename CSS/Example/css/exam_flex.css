@@ -1,0 +1,90 @@
+/* 공통 부분 */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul,li{
+    list-style: none;
+}
+a{
+    display: inline-block;
+    text-decoration: none;
+    color: #fff;
+    background-color: goldenrod;
+    padding: 5px 10px;
+}
+.wrapper{
+    display: flex;
+    flex-direction: column;
+}
+a:hover{
+    background-color: rgba(218,165,32,0.5);
+}
+
+/* 첫번째 section */
+section.hero{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 80px 30px;
+}
+section.hero a{
+    margin-top: 50px;
+}
+section.hero h1{
+    color: #fff;
+    font-size: 3em;
+}
+section.hero article{
+    width: 800px;
+    margin-top: 20px;
+}
+
+/* 두번째 section */
+section.breweries a{
+    margin: 0 10px 10px;
+}
+section.breweries ul{
+    display:flex;
+    flex-wrap: wrap;
+    padding: 10px 30px;
+}
+section.breweries ul li{
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 360px;
+    margin-bottom: 50px;
+    margin-left: 5px;
+    padding: 20px;
+}
+section.breweries figure{
+    position: relative;
+}
+section.breweries p{
+    margin: 20px 10px;
+    height: 100px;
+}
+section.breweries figcaption{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(0,0,0,0.7);
+    color: #fff;
+    padding: 10px;
+}
+section.breweries img{
+    width: 100%;
+}
+
+/* footer 영역 */
+footer{
+    background-color: #333;
+    color: #fff;
+    position: fixed;
+    bottom: 0;
+    padding: 20px;
+    width: 100%;
+    text-align: center;
+}
