@@ -37,12 +37,12 @@ WHERE emp_no >= 10003
 SELECT *
 FROM employees
 WHERE emp_no <= 10001
-  AND emp_no <= 10005;
+	AND emp_no <= 10005;
 
 SELECT *
 FROM employees
 WHERE emp_no <= 10003
-   OR emp_no >= 499997;
+	OR emp_no >= 499997;
 
 -- - BETWEEN [A] AND [B]로 해당 범위 내의 데이터 조회
 SELECT *
@@ -81,7 +81,7 @@ FROM dept_emp;
 -- - LIMIT로 출력 개수를 제한하여 조회
 SELECT *
 FROM employees
-LIMIT 20 OFFSET 30;
+LIMIT 20 OFFSET 30; -- 30번째부터 20개제한출력
 
 -- - ORDER BY로 정렬하여 조회
 SELECT *
@@ -171,7 +171,7 @@ FROM (
 		SELECT emp_no, gender
 		FROM employees
 		WHERE gender = 'F'
-	 ) e;
+	) e;
 
 -- SELECT절에 사용하는 서브쿼리
 SELECT
@@ -189,4 +189,4 @@ WHERE sal.to_date >= now();
 SELECT *
 FROM titles
 WHERE emp_no = 10009
-  AND to_date >= NOW();
+	AND to_date >= NOW();
