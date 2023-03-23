@@ -5,7 +5,10 @@
     $blank = " ";
 
     switch ($score) {
-        case ($score >= 100):
+        case ($score < 0 || $score > 100):
+            echo "잘못된 값을 입력하셨습니다";
+            break;
+        case ($score === 100):
             echo $text1.$blank.$score.$blank.$text2.$blank."<A+>";
             break;
         case ($score >= 90 && $score < 100):
@@ -21,7 +24,7 @@
             echo $text1.$blank.$score.$blank.$text2.$blank."<D>";
             break;
         default:
-            echo $text1.$blank.$score.$blank.$text2.$blank."<F>";
+            echo  $text1.$blank.$score.$blank.$text2.$blank."<F>";
             break;
     }
 ?>

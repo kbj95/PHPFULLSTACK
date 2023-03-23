@@ -17,6 +17,7 @@
     $blank = " ";
     $grade = "";
 
+    // 문제1. 100점은 A+ 순차적으로 내려오기
     // if($score == 100){
     //     echo $text1.$blank.$score.$text2.$blank."<A+>";
     // }
@@ -36,7 +37,7 @@
     //     echo $text1.$blank.$score.$text2.$blank."<F>";
     // }
 
-    // 문제2
+    // 문제2. 0 ~ 100사이의 점수가 아닐경우는 "잘못된 값을 입력하셨습니다" 출력
     // if($score >= 0 && $score <=100){
     //     if($score == 100){
     //         echo $text1.$blank.$score.$text2.$blank."<A+>";
@@ -61,7 +62,7 @@
     //     echo "잘못된 값을 입력 했습니다.";
     // }
 
-    // 문제2 - 1
+    // 문제2 - 1. 중복되는 단어 변수로 지정해서 간단하게 적기
     // if($score >= 0 && $score <=100){
     //     if($score == 100){
     //         $grade = "A+";
