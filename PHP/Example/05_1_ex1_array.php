@@ -48,7 +48,7 @@
                         array(9,10,11)
                     );
     // echo $arr_temp_3_c[0][2];
-
+123
     // 5.배열의 원소 삭제 : unset()
     $arr_week = array("Sun","Mon","delete","Tue","Wed");
     unset($arr_week[2]); // unset
