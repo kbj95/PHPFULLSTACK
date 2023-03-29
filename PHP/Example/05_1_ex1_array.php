@@ -48,9 +48,63 @@
                         array(9,10,11)
                     );
     // echo $arr_temp_3_c[0][2];
+    
     // 5.배열의 원소 삭제 : unset()
     $arr_week = array("Sun","Mon","delete","Tue","Wed");
     unset($arr_week[2]); // unset
-    print_r($arr_week); // 키값까지 같이 사라져서 key인 2와 value "delete"가 모두 사라 
+    // print_r($arr_week); // 키값까지 같이 사라져서 key인 2와 value "delete"가 모두 사라진다.
 
+    // 6.중복되지 않는 원소를 반환하는 함수 : array_diff()
+    $arr_diff_1 = array("a","b","c");
+    $arr_diff_2 = array("a","b","d");
+    $arr_diff = array_diff($arr_diff_1, $arr_diff_2);
+    // print_r($arr_diff); // c
+
+    // 7.배열의 정렬 : asort(), arsort(), ksort(), krsort()
+    // asort();
+    $arr_asort = array("b","a","d","c");
+    asort($arr_asort);
+    // print_r($arr_asort); // a,b,c,d
+
+    // arsort();
+    $arr_arsort = array("b","a","d","c");
+    arsort($arr_arsort);
+    // print_r($arr_arsort); //  d,c,b,a
+    
+    // ksort();
+    $arr_ksort = array("key1" => "val1"
+                    , "key3" => "val3"
+                    , "key4" => "val4"
+                    , "key2" => "val2"
+                );
+    ksort($arr_ksort);
+    // print_r($arr_ksort); //key1,key2,key3,key4
+
+    // krsort();
+    $arr_krsort = array("key1" => "val1"
+                    , "key3" => "val3"
+                    , "key4" => "val4"
+                    , "key2" => "val2"
+                );
+    krsort($arr_krsort);
+    // print_r($arr_krsort);
+
+    // 8.array의 사이즈를 반환하는 함수 : count();
+    // echo count($arr_krsort); 
+
+    // 9.foreach( $array as $key => $val ){};
+    //   foreach( $array as $val ){};
+    $arr1 = array("a" => "1"
+                , "b" => "2"
+                , "c" => "3"
+                , "d" => "4"
+            );
+    foreach( $arr1 as $key => $val)
+    {
+        echo $key." : ".$val."\n"; // 변수명($key, $val)은 다르게 줘도 된다.
+    }
+    foreach( $arr1 as $val)
+    {
+        echo $val."\n";
+    }
 ?>

@@ -25,5 +25,30 @@
                         ,"비빔밥" => "참기름"
                     );
     unset($arr_ass_del["김치"]);
+    // print_r($arr_ass_del);
+
+    // 5.foreach문을 이용해서 키가 "삭제"인 요소를 제거해 주세요.
+        // if문을 사용 , unset("삭제") 금지
+    $arr_ass_del = array(
+        "된장찌개" => "파"
+        , "볶음밥" => "양파"
+        , "삭제" => "값값"
+        , "김치" => "마늘"
+        , "비빔밥" => "참기름"
+    );
+    
+    foreach($arr_ass_del as $key => $val)
+    {
+        if($key === "삭제")
+        {
+            unset($arr_ass_del[$key]);
+        }
+        else
+        {
+            echo $key . " : " . $val . "\n";
+        }
+    }
     print_r($arr_ass_del);
+    
+
 ?>
