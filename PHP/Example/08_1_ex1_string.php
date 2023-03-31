@@ -92,7 +92,7 @@
     // print_r($arr_expl);
 
     // 12. 배열을 특정 문자열로 합치는 함수 : implode()
-    // $str_impl = implode("/",$arr_expl);
-    // echo $str_impl;
+    $str_impl = implode("/",$arr_expl);
+    echo $str_impl;
 
 ?>
