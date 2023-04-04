@@ -5,7 +5,7 @@
 // 파라미터 : PDO   &$param_conn
 // 리턴     : 없음
 // -----------------------------------------------------------------
-function my_db_conn( &$param_conn)
+function my_db_conn( &$param_conn )
 {
     $db_host = "localhost"; // host
     $db_user = "root"; // user

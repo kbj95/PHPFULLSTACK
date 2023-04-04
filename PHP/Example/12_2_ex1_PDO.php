@@ -67,25 +67,25 @@ $obj_conn = new PDO( $db_dns, $db_user, $db_password, $db_option);
 
 
 // INSERT 예제
-$sql =
-    " INSERT INTO departments( "
-    ." dept_no "
-    ." ,dept_name"
-    ." ) "
-    ." VALUES( "
-    ." :dept_no "
-    ." ,:dept_name "
-    ." ) ";
+// $sql =
+//     " INSERT INTO departments( "
+//     ." dept_no "
+//     ." ,dept_name"
+//     ." ) "
+//     ." VALUES( "
+//     ." :dept_no "
+//     ." ,:dept_name "
+//     ." ) ";
 
-$arr_prepare =
-    array(
-        ":dept_no" => "d011"
-        ,":dept_name" => "PHP풀스택"
-    );
+// $arr_prepare =
+//     array(
+//         ":dept_no" => "d011"
+//         ,":dept_name" => "PHP풀스택"
+//     );
 
-$stmt = $obj_conn->prepare( $sql );
-$result = $stmt->execute( $arr_prepare );
-$obj_conn->commit();
+// $stmt = $obj_conn->prepare( $sql );
+// $result = $stmt->execute( $arr_prepare );
+// $obj_conn->commit();
 // var_dump($result);
 
 $obj_conn = null; // DB 파기
