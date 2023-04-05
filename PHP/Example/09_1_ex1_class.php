@@ -47,5 +47,5 @@
 
     //getter, setter로 private 객체에 접근
     $obj_Student->set_std_id("갑순이id");
-    echo $obj_Student->get_std_id();
+    // echo $obj_Student->get_std_id();
 ?>
