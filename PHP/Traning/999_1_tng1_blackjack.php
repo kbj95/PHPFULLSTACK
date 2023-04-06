@@ -12,22 +12,99 @@
 // 4-3. A는 1점 또는 11점 둘 중의 하나로 계산
 //5. 카드의 합이 같으면 다음의 규칙에 따름
 // 5-1. 카드수가 적은 쪽이 승리
-// 5-2. 카드수가 같을경우 스페이드>크로버>다이아>하트 순
+// 5-2. 카드수가 같을경우 비긴다.
 //6. 유저가 카드를 받을 때 딜러는 아래의 규칙을 따른다.
 // 6-1. 딜러는 카드의 합이 17보다 낮을 경우 카드를 더 받음
 // 6-2. 17 이상일 경우는 받지 않는다.
 //7. 1입력 : 카드 더받기, 2입력 : 카드비교, 0입력 : 게임종료
+//8. 한번 사용한 카드는 다시 쓸 수 없다.
 
+// while(true) {
+// 	echo '시작';
+// 	print "\n";
+// 	fscanf(STDIN, "%d\n", $input);
 
-while(true) {
-	echo '시작';
-	print "\n";
-    
-	fscanf(STDIN, "%d\n", $input);        
-	if($input === 0) {
-		break;
-	}
-	echo $input;
-	print "\n";
+// 	if($input === 0) {
+// 		break;
+// 	}
+// 	echo $input;
+// 	print "\n";
+// }
+// echo "끝!\n";
+
+// 1.$arr_deck에 순서대로 카드셋팅
+$arr_shape = array( "♡", "◇", "♧", "♤" );
+$arr_nums = array( "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" );
+$arr_deck = array();
+$player = array();
+$dealer = array();
+
+foreach ( $arr_shape as $shape ) {
+    foreach ( $arr_nums as $num ) {
+        array_push( $arr_deck, "$shape$num" );
+    }
 }
-echo "끝!\n";
+// var_dump($arr_deck);
+
+// 2.$arr_deck배열 섞기
+shuffle($arr_deck);
+array_push($player, array_shift($arr_deck));
+array_push($player, array_shift($arr_deck));
+// array_push($dealer, array_shift($arr_deck));
+// array_push($dealer, array_shift($arr_deck));
+
+// $player_sum = 0;
+// foreach ($player as $val)
+// {
+//     if( strpos($val, "A") !== false )
+//     {
+//         $player_sum += 11;
+//         echo "player카드 : ".$val."\n";
+//     }
+//     else if( strpos($val, "K") !== false ||  strpos($val, "Q") !== false ||  strpos($val, "J") !== false )
+//     {
+//         $player_sum += 10;
+//         echo "player카드 : ".$val."\n";
+//     }
+//     else{
+//         $player_sum += intval(mb_substr($val, 1));
+//         echo "player카드 : ".$val."\n";
+//     }
+// }
+// // echo $player_sum;
+// echo "\n";
+
+// $dealer_sum = 0;
+// foreach ($dealer as $val)
+// {
+//     if( strpos($val, "A") !== false )
+//     {
+//         $dealer_sum += 11;
+//         echo "dealer카드 : ".$val."\n";
+//     }
+//     else if( strpos($val, "K") !== false ||  strpos($val, "Q") !== false ||  strpos($val, "J") !== false )
+//     {
+//         $dealer_sum += 10;
+//         echo "dealer카드 : ".$val."\n";
+//     }
+//     else{
+//         $dealer_sum += intval(mb_substr($val, 1));
+//         echo "dealer카드 : ".$val."\n";
+//     }
+// }
+// // echo $dealer_sum;
+// echo "\n";
+
+// if( $player_sum > $dealer_sum)
+// {
+//     echo "player점수 : ".$player_sum."\n"."dealer점수 : ".$dealer_sum."\n"."player 승리";
+// }
+// else if( $dealer_sum > $player_sum )
+// {
+//     echo "player점수 : ".$player_sum."\n"."dealer점수 : ".$dealer_sum."\n"."dealer 승리";
+// }
+// else { 
+//     echo "player점수 : ".$player_sum."\n"."dealer점수 : ".$dealer_sum."\n"."draw";
+// }
+
+?>
