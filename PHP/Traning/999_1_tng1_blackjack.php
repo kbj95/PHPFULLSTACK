@@ -32,7 +32,7 @@
 // }
 // echo "끝!\n";
 
-// 1.$arr_deck에 순서대로 카드셋팅
+// 1.$arr_deck에 순서대로 카드셋팅----------------------------------
 function fnc_set_deck(){
     $arr_shape = array( "♡", "◇", "♧", "♤" );
     $arr_nums = array( "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" );
@@ -45,29 +45,51 @@ function fnc_set_deck(){
             array_push( $arr_deck, "$shape$num" );
         }
     }
-    global $arr_deck;
     return $arr_deck;
 }
 
 // var_dump(fnc_set_deck());
 
-// 2.$arr_deck배열 섞기----------------------------------------------------------------------------
-
-function start($arr)
+// 2.$arr_deck배열 섞기----------------------------------
+function start()
 {
-    $shuffle = shuffle($arr_deck);
-    return $shuffle;
+    $player = array();
+    $dealer = array();
+    $deck = fnc_set_deck();
+    shuffle($deck);
+    for($i = 1 ; $i <= 2; $i++){
+        array_push($player, array_shift($deck));
+        array_push($dealer, array_shift($deck));
+    }
+    $get_card = array($player,$dealer);
+    return $get_card;
 }
-start($arr_deck);
+// var_dump(start()[0]);
 
-
-
-// shuffle($arr_deck);
-// array_push($player, array_shift($arr_deck));
-// array_push($player, array_shift($arr_deck));
-// array_push($dealer, array_shift($arr_deck));
-// array_push($dealer, array_shift($arr_deck));
-
+// 3. 합계 계산
+function score_sum($player_card){
+    // 랜덤으로 카드두장을 뽑은 상태
+    $player_sum = 0;
+    foreach ($player_card as $val)
+        {
+            if( strpos($val, "A") !== false )
+            {
+                $player_sum += 11;
+            }
+            else if( strpos($val, "K") !== false ||  strpos($val, "Q") !== false ||  strpos($val, "J") !== false )
+            {
+                $player_sum += 10;
+                // echo "player카드 : ".$val."\n";
+            }
+            else{
+                $player_sum += intval(mb_substr($val, 1));
+                // echo "player카드 : ".$val."\n";
+            }
+        }
+    echo $player_sum;
+}
+var_dump((start())[0]);
+score_sum(start()[0]);
 
 // $player_sum = 0;
 // foreach ($player as $val)
