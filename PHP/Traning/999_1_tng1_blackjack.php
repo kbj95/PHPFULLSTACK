@@ -33,42 +33,62 @@
 // echo "끝!\n";
 
 // 1.$arr_deck에 순서대로 카드셋팅
-$arr_shape = array( "♡", "◇", "♧", "♤" );
-$arr_nums = array( "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" );
-$arr_deck = array();
-$player = array();
-$dealer = array();
+function fnc_set_deck(){
+    $arr_shape = array( "♡", "◇", "♧", "♤" );
+    $arr_nums = array( "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" );
+    $arr_deck = array();
+    $player = array();
+    $dealer = array();
 
-foreach ( $arr_shape as $shape ) {
-    foreach ( $arr_nums as $num ) {
-        array_push( $arr_deck, "$shape$num" );
+    foreach ( $arr_shape as $shape ) {
+        foreach ( $arr_nums as $num ) {
+            array_push( $arr_deck, "$shape$num" );
+        }
     }
+    global $arr_deck;
+    return $arr_deck;
 }
-// var_dump($arr_deck);
 
-// 2.$arr_deck배열 섞기
-shuffle($arr_deck);
-array_push($player, array_shift($arr_deck));
-array_push($player, array_shift($arr_deck));
+// var_dump(fnc_set_deck());
+
+// 2.$arr_deck배열 섞기----------------------------------------------------------------------------
+
+function start($arr)
+{
+    $shuffle = shuffle($arr_deck);
+    return $shuffle;
+}
+start($arr_deck);
+
+
+
+// shuffle($arr_deck);
+// array_push($player, array_shift($arr_deck));
+// array_push($player, array_shift($arr_deck));
 // array_push($dealer, array_shift($arr_deck));
 // array_push($dealer, array_shift($arr_deck));
+
 
 // $player_sum = 0;
 // foreach ($player as $val)
 // {
 //     if( strpos($val, "A") !== false )
 //     {
-//         $player_sum += 11;
-//         echo "player카드 : ".$val."\n";
+//         if ($sum + 11 > 21){
+//             $sum += 1;
+//         }
+//         else{
+//             $sum += 11;
+//         }
 //     }
 //     else if( strpos($val, "K") !== false ||  strpos($val, "Q") !== false ||  strpos($val, "J") !== false )
 //     {
 //         $player_sum += 10;
-//         echo "player카드 : ".$val."\n";
+//         // echo "player카드 : ".$val."\n";
 //     }
 //     else{
 //         $player_sum += intval(mb_substr($val, 1));
-//         echo "player카드 : ".$val."\n";
+//         // echo "player카드 : ".$val."\n";
 //     }
 // }
 // // echo $player_sum;
@@ -77,7 +97,7 @@ array_push($player, array_shift($arr_deck));
 // $dealer_sum = 0;
 // foreach ($dealer as $val)
 // {
-//     if( strpos($val, "A") !== false )
+//     if( strpos($val, "A") !== false)
 //     {
 //         $dealer_sum += 11;
 //         echo "dealer카드 : ".$val."\n";
