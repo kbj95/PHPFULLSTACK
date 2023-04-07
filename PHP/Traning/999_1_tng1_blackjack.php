@@ -1,4 +1,5 @@
 <?php
+
 //블랙잭 게임
 //-카드 숫자를 합쳐 가능한 21에 가깝게 만들면 이기는 게임
 
@@ -19,134 +20,172 @@
 //7. 1입력 : 카드 더받기, 2입력 : 카드비교, 0입력 : 게임종료
 //8. 한번 사용한 카드는 다시 쓸 수 없다.
 
-// while(true) {
-// 	echo '시작';
-// 	print "\n";
-// 	fscanf(STDIN, "%d\n", $input);
+class Blackjack {
+    public $deck;
+    public $player_card;
+    public $dealer_card;
+    public $player_score;
+    public $dealer_score;
 
-// 	if($input === 0) {
-// 		break;
-// 	}
-// 	echo $input;
-// 	print "\n";
-// }
-// echo "끝!\n";
-
-// 1.$arr_deck에 순서대로 카드셋팅----------------------------------
-function fnc_set_deck(){
-    $arr_shape = array( "♡", "◇", "♧", "♤" );
-    $arr_nums = array( "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" );
-    $arr_deck = array();
-    $player = array();
-    $dealer = array();
-
-    foreach ( $arr_shape as $shape ) {
-        foreach ( $arr_nums as $num ) {
-            array_push( $arr_deck, "$shape$num" );
-        }
-    }
-    return $arr_deck;
-}
-
-// var_dump(fnc_set_deck());
-
-// 2.$arr_deck배열 섞기----------------------------------
-function start()
-{
-    $player = array();
-    $dealer = array();
-    $deck = fnc_set_deck();
-    shuffle($deck);
-    for($i = 1 ; $i <= 2; $i++){
-        array_push($player, array_shift($deck));
-        array_push($dealer, array_shift($deck));
-    }
-    $get_card = array($player,$dealer);
-    return $get_card;
-}
-// var_dump(start()[0]);
-
-// 3. 합계 계산
-function score_sum($player_card){
-    // 랜덤으로 카드두장을 뽑은 상태
-    $player_sum = 0;
-    foreach ($player_card as $val)
-        {
-            if( strpos($val, "A") !== false )
-            {
-                $player_sum += 11;
-            }
-            else if( strpos($val, "K") !== false ||  strpos($val, "Q") !== false ||  strpos($val, "J") !== false )
-            {
-                $player_sum += 10;
-                // echo "player카드 : ".$val."\n";
-            }
-            else{
-                $player_sum += intval(mb_substr($val, 1));
-                // echo "player카드 : ".$val."\n";
+    // method명		: fnc_set_deck
+    // parameter 	: 없음
+    // 기능 		: 덱 세팅
+    public function fnc_set_deck() {
+        $pattern = array( "♡", "◇", "♧", "♤" );
+        $nums = array( "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" );
+        $deck = array();
+        foreach( $pattern as $patt ) {
+            foreach( $nums as $num ) {
+                array_push( $deck, "$num$patt" );
             }
         }
-    echo $player_sum;
+        return $deck;
+    }
+
+    // 게임 시작
+    public function __construct() {
+        $this->deck = $this->fnc_set_deck();
+        shuffle( $this->deck );
+        $this->player_card = array();
+        $this->dealer_card = array();
+        // 2장씩 나눠주고 덱에서 빼기
+        for($i = 0; $i < 2; $i++) { 
+            array_push( $this->player_card, array_shift( $this->deck ) );
+            array_push( $this->dealer_card, array_shift( $this->deck ) );
+        }
+        $this->player_score = $this->fnc_calculate_score( $this->player_card );
+        $this->dealer_score = $this->fnc_calculate_score( $this->dealer_card );
+    }
+
+    // method명		: fnc_calculate_score
+    // parameter 	: $havingcard
+    // 기능 		: 합계 계산
+    public function fnc_calculate_score( $havingcard ) {
+        $sum = 0;
+        foreach($havingcard as $card) {
+            // A가 나왔을때 11점을 더하면 게임오버라면 1점만 더하고, 아니라면 11점을 더하기
+            // strpos() : 문자열에서 특정 문자열의 첫 번째 발생 위치를 반환, 문자열이 없다면 false를 반환함
+            if( strpos( $card, "A" 
+            ) !== false ) {
+                if ($sum + 11 > 21) {
+                    $sum += 1;
+                } else {
+                    $sum += 11;
+                }
+            } else if ( strpos( $card, "K" ) !== false || strpos( $card, "Q" ) !== false || strpos( $card, "J" ) !== false || strpos( $card, "10" ) !== false) {
+                $sum += 10;
+            } else {
+                $sum += intval( substr( $card, 0, 1 ) ); // 특수기호 잘라서 int로 바꾸고 점수에 더하기
+            }
+        }
+        return $sum;
+    }
+
+    // method명		: fnc_get_card
+    // parameter 	: 없음
+    // 기능 		: 1 입력시 카드 더받고 21초과인지 계산
+    public function fnc_get_card() {
+        array_push( $this->player_card, array_shift( $this->deck ) );
+        if ( $this->fnc_calculate_score( $this->player_card ) > 21) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    // method명		: fnc_dealer_get_card
+    // parameter 	: 없음
+    // 기능 		: 딜러는 카드의 합이 17보다 낮을 경우 카드를 더 받음
+    public function fnc_dealer_get_card() {
+        while( $this->fnc_calculate_score( $this->dealer_card ) < 17 ) {
+            array_push( $this->dealer_card, array_shift( $this->deck ) );
+            if( $this->fnc_calculate_score( $this->dealer_card ) > 21 ) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // method명		: fnc_compare_card
+    // parameter 	: 없음
+    // 기능 		: 2 입력시 카드 비교
+    public function fnc_compare_card() {
+        if( !$this->fnc_dealer_get_card() ) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    // method명		: fnc_check_winner
+    // parameter 	: 없음
+    // 기능 		: 승자 확인, 카드 갯수 카운팅
+    public function fnc_check_winner() {
+        if( $this->fnc_calculate_score( $this->player_card ) > 21 ) {
+            return "Dealer 승리";
+        } else if( $this->fnc_calculate_score( $this->dealer_card ) > 21) {
+            return "Player 승리";
+        } else if( $this->fnc_calculate_score( $this->player_card ) > $this->fnc_calculate_score( $this->dealer_card ) ) { // 2입력시 점수 비교
+            return "Player 승리";
+        } else if( $this->fnc_calculate_score( $this->player_card ) < $this->fnc_calculate_score( $this->dealer_card ) ) {
+            return "Dealer 승리";
+        } else {
+            if ( count( $this->player_card ) < count( $this->dealer_card ) ) { // 점수가 같을경우 카드갯수 비교
+                return "Player 승리";
+            } else if ( count( $this->player_card ) > count( $this->dealer_card ) ) {
+                return "Dealer 승리";
+            } else {
+                return "비겼습니다";
+            }
+        }
+    }
 }
-var_dump((start())[0]);
-score_sum(start()[0]);
 
-// $player_sum = 0;
-// foreach ($player as $val)
-// {
-//     if( strpos($val, "A") !== false )
-//     {
-//         if ($sum + 11 > 21){
-//             $sum += 1;
-//         }
-//         else{
-//             $sum += 11;
-//         }
-//     }
-//     else if( strpos($val, "K") !== false ||  strpos($val, "Q") !== false ||  strpos($val, "J") !== false )
-//     {
-//         $player_sum += 10;
-//         // echo "player카드 : ".$val."\n";
-//     }
-//     else{
-//         $player_sum += intval(mb_substr($val, 1));
-//         // echo "player카드 : ".$val."\n";
-//     }
-// }
-// // echo $player_sum;
-// echo "\n";
+$input = null; // input 초기화
+while( !( $input === 0 ) ) {
+    sleep( 3 );
+    $game = new Blackjack();
 
-// $dealer_sum = 0;
-// foreach ($dealer as $val)
-// {
-//     if( strpos($val, "A") !== false)
-//     {
-//         $dealer_sum += 11;
-//         echo "dealer카드 : ".$val."\n";
-//     }
-//     else if( strpos($val, "K") !== false ||  strpos($val, "Q") !== false ||  strpos($val, "J") !== false )
-//     {
-//         $dealer_sum += 10;
-//         echo "dealer카드 : ".$val."\n";
-//     }
-//     else{
-//         $dealer_sum += intval(mb_substr($val, 1));
-//         echo "dealer카드 : ".$val."\n";
-//     }
-// }
-// // echo $dealer_sum;
-// echo "\n";
+    echo "----------------------새 게임-----------------------";
+    echo "\nPlayer 카드 : ".implode( ", ", $game->player_card )."\n";
+    echo "Player 점수 : ".$game->fnc_calculate_score( $game->player_card )."\n";
+    echo "\nDealer 카드 : ".implode( ", ", $game->dealer_card )."\n";
+    echo "Dealer 점수 : ".$game->fnc_calculate_score( $game->dealer_card )."\n";
 
-// if( $player_sum > $dealer_sum)
-// {
-//     echo "player점수 : ".$player_sum."\n"."dealer점수 : ".$dealer_sum."\n"."player 승리";
-// }
-// else if( $dealer_sum > $player_sum )
-// {
-//     echo "player점수 : ".$player_sum."\n"."dealer점수 : ".$dealer_sum."\n"."dealer 승리";
-// }
-// else { 
-//     echo "player점수 : ".$player_sum."\n"."dealer점수 : ".$dealer_sum."\n"."draw";
-// }
+    while(true) {
+        echo "\n1 : 카드 더받기\n2 : 카드 비교\nO : 게임 종료\n";
+        echo "----------------------------------------------------\n";
+        fscanf( STDIN, "%d\n", $input ); 
+        if( $input === 1 ) {
+            if( !$game->fnc_get_card() ) { // 1 입력시 21초과일경우 break
+                echo "\nPlayer 카드 : ".implode( ", ", $game->player_card )."\n";
+                echo "Player 점수 : ".$game->fnc_calculate_score( $game->player_card )."\n";
+                echo "\nDealer 카드 : ".implode( ", ", $game->dealer_card )."\n";
+                echo "Dealer 점수 : ".$game->fnc_calculate_score( $game->dealer_card )."\n";
+                break;
+            }
+            echo "Player 카드 : ".implode( ", ", $game->player_card )."\n";
+            echo "Player 점수 : ".$game->fnc_calculate_score( $game->player_card )."\n";
+        } else if( $input === 2 ) { 
+            if( !$game->fnc_compare_card() ) { // 2 입력시 21초과일경우 break
+                echo "\nPlayer 카드 : ".implode( ", ", $game->player_card )."\n";
+                echo "Player 점수 : ".$game->fnc_calculate_score( $game->player_card )."\n";
+                echo "\nDealer 카드 : ".implode( ", ", $game->dealer_card )."\n";
+                echo "Dealer 점수 : ".$game->fnc_calculate_score( $game->dealer_card )."\n";
+                break;
+            }
+            echo "\nPlayer 카드 : ".implode( ", ", $game->player_card )."\n";
+            echo "Player 점수 : ".$game->fnc_calculate_score( $game->player_card )."\n";
+            echo "\nDealer 카드 : ".implode( ", ", $game->dealer_card )."\n";
+            echo "Dealer 점수 : ".$game->fnc_calculate_score( $game->dealer_card )."\n";
+            break;
+        } else if( $input === 0 ) { // 0 입력시 break
+            break;
+        }
+    }
+
+    echo "\n".$game->fnc_check_winner()."\n\n";
+    echo "----------------------------------------------------\n";
+}
 
 ?>
