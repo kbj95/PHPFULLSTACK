@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        div{
+            width: 300px;
+            height: 300px;
+        }
+        canvas{
+            border: 3px solid #000;
+        }
+    </style>
+    <title>Sign</title>
+</head>
+<body>
+    <div id="div1">
+        <canvas id="can1"></canvas>
+    </div>
+    <br>
+    <br>
+    <button type="button" id="btn1"></button>
+
+    <script>
+        const div1 = document.getElementById('div1');
+        const can1 = document.getElementById('can1');
+        const btn1 = document.getElementById('btn1');
+        const cxt = can1.getcontext("2d");
+        let drawble = false;
+    </script>
+
+</body>
+</html>
