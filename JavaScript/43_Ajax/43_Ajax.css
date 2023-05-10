@@ -1,0 +1,13 @@
+#box{
+    width: 1000px;
+    height: 200px;
+    background-color: beige;
+}
+#adress{
+    margin-top: 20px;
+}
+
+img{
+    width: 200px;
+    height: 200px;
+}
