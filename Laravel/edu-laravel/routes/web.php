@@ -175,3 +175,30 @@ Route::get('/sign', function(){
     return "Sign!!!";
 })->name('sign')->middleware('signed');
 // })->name('invitation')->middleware('signed');
+
+
+//--------------------------------------------------------------------------
+// 컨트롤러 
+//--------------------------------------------------------------------------
+// edu-larvel까지 디렉토리 변경 후
+// 커맨드로 컨트롤러 생성 : php artisan make:controller TestController
+use App\Http\Controllers\TestController;
+Route::get('/test', [TestController::class, 'index'])->name('tests.index');
+
+// 커맨드로 컨트롤러 생성 : php artisan make:controller TasksController --resource
+use App\Http\Controllers\TasksController;
+Route::resource('/tasks', TasksController::class);
+
+// *Tip - php artisan route:list : 사용하고있는 라우트들이 나오는 커맨드
+// 방식            URL ( {task} : 세그먼트파라미터 )             Controller의 메소드 이름
+// GET|HEAD        tasks ...................................... tasks.index › TasksController@index  
+// POST            tasks ...................................... tasks.store › TasksController@store  
+// GET|HEAD        tasks/create ............................... tasks.create › TasksController@create  
+// GET|HEAD        tasks/{task} ............................... tasks.show › TasksController@show  
+// PUT|PATCH       tasks/{task} ............................... tasks.update › TasksController@update  
+// DELETE          tasks/{task} ............................... tasks.destroy › TasksController@destroy  
+// GET|HEAD        tasks/{task}/edit .......................... tasks.edit › TasksController@edit
+
+
+use App\Http\Controllers\BladeController;
+Route::get('/blade', [BladeController::class, 'index'])->name('blade.index');

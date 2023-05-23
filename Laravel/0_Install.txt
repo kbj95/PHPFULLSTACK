@@ -50,3 +50,4 @@
 	Laravel Snippets : 일부 자동완성 기능 제공
 	Laravel Extra Intellisense : 일부 자동완성 기능 제공
 	Getter and Setter Generator : getter / setter 자동 생성
+	laravel blade : blade 관련 확장프로그램(주의사항 html 자동완성이 안되기때문에 ctrl + , 누르고 설정->include lang 검색-> 키에 blade 값에 html 추가)
