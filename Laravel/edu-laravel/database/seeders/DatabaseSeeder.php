@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CategorySeeder::class);
 
         // 더미 데이터 삽입용 팩토리 호출
-        \App\Models\Board::factory(19000)->create();
+        \App\Models\Board::factory(1000)->create();
 
         // \App\Models\User::factory(10)->create();
     }
