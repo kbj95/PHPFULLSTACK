@@ -199,6 +199,19 @@ Route::resource('/tasks', TasksController::class);
 // DELETE          tasks/{task} ............................... tasks.destroy › TasksController@destroy  
 // GET|HEAD        tasks/{task}/edit .......................... tasks.edit › TasksController@edit
 
-
+// 블레이드 템플릿
 use App\Http\Controllers\BladeController;
 Route::get('/blade', [BladeController::class, 'index'])->name('blade.index');
+
+// board
+use App\Http\Controllers\BoardController;
+Route::resource('/board',BoardController::class);
+
+// GET|HEAD        board ...................................... board.index › BoardController@index  
+// POST            board ...................................... board.store › BoardController@store  
+// GET|HEAD        board/create ............................... board.create › BoardController@create  
+// GET|HEAD        board/{board} .............................. board.show › BoardController@show  
+// PUT|PATCH       board/{board} .............................. board.update › BoardController@update  
+// DELETE          board/{board} .............................. board.destroy › BoardController@destroy  
+// GET|HEAD        board/{board}/edit ......................... board.edit › BoardController@edit  
+
