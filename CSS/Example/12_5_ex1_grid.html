@@ -33,30 +33,36 @@
 				grid-row-gap : 로우 사이의 간격을 지정합니다.
 				grid-gap : 컬럼과 로우 사이의 간격을 한꺼번에 지정합니다.
 			*/
-			.grid_container {
+			.grid_container2 {
 				background-color: beige;
 				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+				grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
 				/*grid-template-rows: minmax(100px, 200px) minmax(100px, 200px);*/
 				/*grid-gap: 10px 20px;*/
 			}
 			.grid_container2 {
 				background-color: beige;
-				display: grid;
-				grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 			}
-			.grid_item {
+			.grid_item1{
+				height: 300px;
 				background-color: aqua;
 			}
-			.grid_item:nth-child(odd) {
+			.grid_item2 {
+				height: 300px;
 				background-color: darkkhaki;
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 			}
-			.grid_item_1 {
-				grid-column: 1/4;
+			.test{
+				background: pink;
+				height: 300px;
+			}
+			/* .grid_item_1 {
+				grid-column: 1/2;
 			}
 			.grid_item_4 {
 				grid-row: 2/3;
-			}
+			} */
 		</style>
 	</head>
 	<body>
@@ -64,7 +70,7 @@
 		<br><br>
 		<br><br>
 		<br><br>
-		<div class="grid_container">
+		<!-- <div class="grid_container">
 			<div class="grid_item_1">1</div>
 			<div class="grid_item">2</div>
 			<div class="grid_item">3</div>
@@ -72,15 +78,16 @@
 			<div class="grid_item">5</div>
 			<div class="grid_item">6</div>
 		</div>
-		<br><br>
+		<br><br> -->
 		
 		<div class="grid_container2">
-			<div class="grid_item">1</div>
-			<div class="grid_item">2</div>
-			<div class="grid_item">3</div>
-			<div class="grid_item">4</div>
-			<div class="grid_item">5</div>
-			<div class="grid_item">6</div>
+			<div class="grid_item1">1</div>
+			<div class="grid_item2">2
+				<div class="test">3</div>
+				<div class="test">4</div>
+			</div>
+			<!-- <div class="grid_item">3</div>
+			<div class="grid_item">4</div> -->
 		</div>
 	</body>
 </html>
