@@ -3,17 +3,40 @@
 
   <!-- nav -->
   <Navi :navList="navList"/>
+  <div class="discount">
+    <!-- <p v-if="flg">😻지금 당장 구매하시면, 20% 할인😻</p> -->
+    <p>😻지금 당장 구매하시면, {{ num }} % 할인😻</p>
+  </div>
+  <!-- <button @click="hookTest = !hookTest">훅 테스트</button> -->
+  <!-- {{ hookTest }} -->
+  <br>
+  <br>
+  <!-- $event = 이벤트사용시 vue가 자동으로 생성해줌 -->
+  <!-- <input type="text" @input="inputTest = $event.target.value"> -->
+  <input type="text" v-model="inputTest">
+  <br>
+  <span>{{ inputTest }}</span>
+  <br>
 
   <!-- modal -->
+  <!-- :class="{ endTransition : modalFlg } = modalFlg가 참일때만 endTransition class를 주겟다 -->
+  <!-- <div class="startTransition" :class="{ endTransition : modalFlg }"> -->
+
   <!-- @자식이 보내는 값 가져오고 :자식에게 값 보내기-->
-  <Modal 
-    @closeModal="modalFlg = false; products[productNum].count = 1" 
-    :modalFlg="modalFlg"
-    :products="products"
-    :productNum="productNum"
-    @cntUp="plus(productNum)"
-    @cntDown="minus(productNum)"
-  />
+  <!-- transition = vue에서 기본제공 -->
+  <transition name="modalTransition">
+    <Modal 
+      @closeModal="modalFlg = false; products[productNum].count = 1" 
+      :modalFlg="modalFlg"
+      :products="products"
+      :productNum="productNum"
+    />
+      <!-- 
+      @cntUp="plus(productNum)"
+      @cntDown="minus(productNum)" 
+      -->
+  </transition>
+  <!-- </div> -->
 
   <!-- <div class="bg_black" v-if="modalFlg">
     <div class="bg_white">
@@ -70,6 +93,10 @@ export default {
       // products: 
       // ['티셔츠', '바지', '점퍼'],
       // count : 1,
+      num: 20,
+      flg: false,
+      hookTest: false,
+      inputTest: " ",
       navList : ['홈', '상품', '기타'],
       products: data,
       modalFlg: false,
@@ -84,6 +111,26 @@ export default {
       product2: '바지',
       price2: '5000',
       styleR: 'color:red',
+    }
+  },
+  mounted() {
+    let interval = setInterval(()=>
+    {this.num--
+        if(this.num === 0){
+          clearInterval(interval);
+        }
+    }
+    ,1000);
+  },
+  updated(){
+    this.flg = true;
+  },
+  watch: { // 실시간 감시 
+    inputTest(input) {
+      if( input.includes(3) ){
+        alert('3333');
+        this.inputTest = "";
+      }
     }
   },
   methods: {  // 함수를 설정하는 영역
