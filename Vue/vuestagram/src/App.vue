@@ -9,6 +9,7 @@
         <img alt="Vue logo" src="./assets/logo.png" class="logo">
       </li>
       <li v-if="$store.state.tabFlg == 1" class="header-button header-button-right"  @click="$store.commit('changeTabFlg', 2)">다음</li>
+      <li v-if="$store.state.tabFlg == 2" class="header-button header-button-right" @click="$store.dispatch('writecontent')">작성</li>
     </ul>
   </div>
 
@@ -32,14 +33,20 @@ export default {
   created() {
     this.$store.dispatch('getMainList');
   },
+  mounted() {
+    window.addEventListener('scroll',function(){
+      console.log('gggg');
+    })
+  },
   methods: {
     updateImg(e) {
       let file = e.target.files;
       let imgUrl = URL.createObjectURL(file[0]);
       this.$store.commit('changeImgUrl', imgUrl);
       this.$store.commit('changeTabFlg', 1);
+      this.$store.commit('changeFile',file[0]);
       // e.target.value = '';
-    }
+    },
   },
   components: {
     ContainerComponent: ContainerComponent,

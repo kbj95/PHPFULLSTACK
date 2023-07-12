@@ -10,6 +10,8 @@ const store = createStore({
             tabFlg: 0, // tab UI flg(0:메인, 1:필터, 2:작성)
             imgUrl: '', // 이미지 url
             filterClass: '', // 필터
+            content: '', // 내용
+            imgFile: null, // 이미지 파일
         }
     },
     mutations: { // 일반적인 js 함수 정의
@@ -43,9 +45,24 @@ const store = createStore({
         clearState(state){
             state.filterClass = '';
             state.imgUrl = '';
-        }
+            state.content = '';
+            state.imgFile = '';
+        },
+        // 이미지 파일형식 변경
+        changeFile(state, file){
+            state.imgFile = file;
+        },
+        // 게시글 내용 변경
+        changeContent(state, content){
+            state.content = content;
+        },
+        // 작성글 데이터 셋팅용
+        upload(state, data){
+            state.boardData.unshift(data);
+        },
     },
     actions: {  // 비동기, ajax 처리 정의
+        // 메인 게시글
         getMainList(context){
             axios.get('http://192.168.0.66/api/boards')
             .then(res => {
@@ -56,6 +73,7 @@ const store = createStore({
                 console.log(err)
             })
         },
+        // 게시글 추가 출력
         getMoreList(context){
             axios.get('http://192.168.0.66/api/boards/' + context.state.lastId)
             .then(res => {
@@ -72,6 +90,33 @@ const store = createStore({
             })
             .catch( err => {
                 console.log(err)
+            })
+        },
+        // 게시글 작성
+        writecontent(context){
+            const header = {
+                headers: {
+                    'Content-Type' : 'multipart/form-data',
+                }
+            }
+            axios.post('http://192.168.0.66/api/boards', {
+                name: '권봉정',
+                filter: context.state.filterClass,
+                img: context.state.imgFile,
+                content: context.state.content,
+            },header)
+            .then(res => {
+                // 처리
+                // console.log(res.data);
+                if(res.data){
+                    context.commit('upload',res.data);
+                    context.state.tabFlg = 0;
+                    context.commit('clearState');
+                    // location.reload();
+                }
+            })
+            .catch( err => {
+                console.log(err);
             })
         },
     }

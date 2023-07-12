@@ -3,11 +3,12 @@
     <!-- {{ $store.state.boardData }} -->
     <div class="post" v-for="(item, i) in $store.state.boardData" :key="i">
         <!-- <div class="post-img" :style="{ backgroundImage : `url(${item.img})`}"> -->
-        <div class="post-img" :style="`background-image : url(${item.img})`">
+        <div class="post-img" :style="`background-image : url(${item.img})`" :class="item.filter">
             <!-- <img :src="item.img"> -->
         </div>
         <div class="post-content">
             <p>ID : {{ item.id }}</p>
+            <p>필터 : {{ item.filter }}</p>
             <p>{{ item.likes }} 좋아요</p>
             <p><strong>{{ item.name }}</strong> {{ item.content }}</p>
             <p>{{ item.created_at }}</p>
