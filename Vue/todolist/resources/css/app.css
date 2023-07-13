@@ -1,0 +1,73 @@
+/* 공통 */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul,li{
+    list-style: none;
+}
+#wrap{
+    width: 90vw;
+    min-height: 500px;
+    background: paleturquoise;
+    margin: 0 auto;
+    padding-bottom: 20px;
+}
+
+/* header */
+#header{
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+}
+#header input{
+    width: 80%;
+    height: 35px;
+    padding: 10px;
+    outline: none;
+    border: 1px solid #ccc;
+}
+#header button{
+    margin-left: 10px;
+    width: 50px;
+    height: 35px;
+    line-height: 35px;
+}
+
+
+.list{
+    width: 90%;
+    margin: 0 auto;
+}
+
+.list li{
+    height: 30px;
+    line-height: 30px;
+    text-indent: 10px;
+    background: white;
+    margin-top: 5px;
+}
+
+input.check{
+    margin-right: 5px;
+}
+
+.delBtn{
+    float: right;
+    width: 17px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    color: #777;
+    margin: 6px;
+}
+
+.delBtn::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.line{
+    text-decoration: line-through;
+}
