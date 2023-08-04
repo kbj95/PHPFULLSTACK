@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BoardController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +18,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/token', [AuthController::class, 'issueToken']);
 Route::get('/chk', [AuthController::class, 'chk']);
+Route::get('/list', [BoardController::class, 'getList']);

@@ -1,8 +1,8 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
   <h1>App.vue</h1>
-  <!-- <router-link to="/">홈으로</router-link>
-  <router-link to="/post"> 포스트로</router-link> -->
+  <router-link to="/">홈으로</router-link>
+  <router-link to="/post"> 포스트로</router-link>
 
   <hr>
   <PostComponent :propsTest = 1></PostComponent>
