@@ -55,13 +55,13 @@ const printNum = setInterval( function(){
 
 // 연습문제2 방법 2
 const clock = document.getElementById('clock');
-getTime(); // 로딩시 바로 출력하기위해 한번 호출해줌
+// getTime(); // 로딩시 바로 출력하기위해 한번 호출해줌
 function getTime(){
     const time = new Date();
     const nows = time.toLocaleTimeString();
     clock.innerHTML = '현재 시각 ' + nows;
 }
-let timer = setInterval(getTime,1000);
+let timer = setInterval(getTime,3000);
 
 const stopBtn = document.getElementById('stop');
 stopBtn.addEventListener('click', () => {

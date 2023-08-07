@@ -5,10 +5,21 @@ namespace App\Lib;
 use Exception;
 use Throwable;
 use Illuminate\Support\Facades\Log;
+use Symfony\Component\ErrorHandler\Debug;
 
-class JWT{
+class JWT
+{
     protected $alg = 'SHA256';
     protected $secret_key = 'php506';
+
+    protected $error_base = [
+        "E01"   => "Not set Token"
+        ,"E02"  => "Unknown form Token"
+        ,"E03"  => "Unauthorization Token"
+        ,"E04"  => "Exprited Token"
+        ,"E99"  => "System Error"
+    ];
+
     /* 
         JWT 생성
     */
@@ -39,16 +50,31 @@ class JWT{
         Log::debug("-------signature : ". $signature);
 
         Log::debug("------createJWT End---------");
-        return $header.".".$payload.".".$signature;
+        return base64_encode($header.".".$payload.".".$signature);
     }
 
     public function chkToken( $token ){
         Log::debug("------chkToken Start---------");
-        Log::debug("token : ". $token);
+        // Log::debug("token : ". $token);
 
         try {
+            // 토큰 유무체크
+            if($token === ""){
+                throw new Exception("E01");
+            }
+
+            // 토큰 디코딩
+            $decode_token = base64_decode($token);
+            Log::debug($decode_token);
+
             // 토큰을 분리
-            $arr_token = explode(".", $token);
+            $arr_token = explode(".", $decode_token);
+
+            // 토큰 형태체크
+            if(count($arr_token) !== 3){
+                throw new Exception("E02");
+            }
+
             $header = $arr_token[0];
             $payload = $arr_token[1];
             $signature = $arr_token[2];
@@ -56,7 +82,7 @@ class JWT{
             // 토큰 유효기간 확인
             $arr_payload = json_decode(base64_decode($payload));
             if(time() > $arr_payload->exp){
-                throw new Exception('exp over');
+                throw new Exception('E04');
             }
 
             // 검증용 signature 생성
@@ -65,15 +91,49 @@ class JWT{
 
             Log::debug("verify : ".$verify);
             if($signature !== $verify){
-                throw new Exception('signature 다름');
+                throw new Exception('E03');
             }
         } catch (Throwable $th) { // Throwable : php 7버전 이상부터 사용 가능
-        Log::debug("Error : ". $th->getMessage());
-            return false;
+
+            [
+                "errflg" => "1"
+                ,"error_info" => [
+                    "code" => "E01"
+                    ,"msg" => "Not set Token"
+                ]
+            ];
+            // 예외 코드 확인
+            $code = array_key_exists($th->getMessage(), $this->error_base) ? $th->getMessage() : "E99";
+
+            $error_info = [
+                "code" => $code
+                ,"msg" => $this->error_base[$code]
+            ];
+
+            Log::debug("Error : ". $code);
+                return $error_info;
         }
 
         Log::debug("------chkToken End---------");
-        return true;
+        return "";
+    }
+
+    /*
+    * 메소드명 : create_error_info
+    * 기능     : 에러정보 배열 작성
+    * 파라미터 : Strong     $error_code
+    * 리턴     : Array      $error_info
+    */
+    public function create_error_info($error_code){
+        $code = array_key_exists( $error_code, $this->error_base) ? $error_code : "E99";
+
+        $error_info = [
+            "code" => $code
+            ,"msg" => $this->error_base[$code]
+        ];
+        Log::debug("Error : ".$code);
+
+        return $error_info;
     }
 }
 ?>
