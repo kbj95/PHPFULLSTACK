@@ -1,17 +1,44 @@
 import { createWebHistory, createRouter } from 'vue-router';
 import Main from './components/MainComponent.vue';
 import Login from './components/LoginComponent.vue';
+import TokenController from './js/TokenController.js';
+import Home from './components/HomeComponent.vue';
+
+const configFlg = {
+    main: true,
+    login: false,
+}
+
+const beforeAuth = path => (from, to, next) => {
+    const isToken = TokenController.getToken();
+    const flg = configFlg[path];
+
+    if (isToken && path === 'login') {
+        next('main');
+    } else if ((flg && isToken) || !flg) {
+        return next();
+    } else {
+        next('/login');
+    }
+}
 
 const routes = [
-    {
+	{
+		path: '/',
+        name: 'home',
+        component: Home,
+	}
+    ,{
         path: '/main',
         name: 'main',
-        component: Main
+        component: Main,
+        beforeExter: beforeAuth('main'),
     },
     {
         path: '/login',
         name: 'login',
-        component: Login
+        component: Login,
+        beforeExter: beforeAuth('login'),
     }
 ];
 
